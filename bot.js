@@ -9,7 +9,7 @@ const client = new Client({
 });
 
 const routes = {
-  "CHANNEL_A": "CHANNEL_B",
+  "1495380406567178302": "1496887895687037234",
   "CHANNEL_B": "CHANNEL_A"
 };
 
