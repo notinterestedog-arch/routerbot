@@ -20,6 +20,8 @@ client.on('messageCreate', async (message) => {
 
   if (message.channel.id === targetId) return;
   
+  if (message.author.id === client.user.id) return;
+  
   const channel = await client.channels.fetch(targetId);
   if (!channel) return;
 
