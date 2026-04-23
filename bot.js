@@ -1,5 +1,22 @@
 const { Client, GatewayIntentBits } = require('discord.js');
+const express = require('express');
 
+// =======================
+// EXPRESS KEEP-ALIVE SERVER (RENDER FIX)
+// =======================
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Bot is running");
+});
+
+app.listen(10000, () => {
+  console.log("Web server running on port 10000");
+});
+
+// =======================
+// DISCORD BOT
+// =======================
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -8,14 +25,14 @@ const client = new Client({
   ]
 });
 
-// ROUTES
+// ROUTING TABLE
 const routes = {
   "CHANNEL_A_ID": "CHANNEL_B_ID",
   "CHANNEL_C_ID": "CHANNEL_D_ID"
 };
 
 client.on('messageCreate', async (message) => {
-  if (message.author.bot) return;
+  if (message.author.id === client.user.id) return;
 
   const targetId = routes[message.channel.id];
   if (!targetId) return;
@@ -36,4 +53,5 @@ client.on('messageCreate', async (message) => {
   }
 });
 
+// LOGIN BOT
 client.login(process.env.BOT_TOKEN);
