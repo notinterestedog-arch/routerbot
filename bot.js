@@ -14,11 +14,12 @@ const routes = {
 };
 
 client.on('messageCreate', async (message) => {
-  if (message.author.bot) return;
 
   const targetId = routes[message.channel.id];
   if (!targetId) return;
 
+  if (message.channel.id === targetId) return;
+  
   const channel = await client.channels.fetch(targetId);
   if (!channel) return;
 
