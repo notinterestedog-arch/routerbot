@@ -12,6 +12,14 @@ app.listen(10000, () => {
   console.log("Web server running on port 10000");
 });
 
+client.on('messageCreate', async (message) => {
+  console.log("Channel ID:", message.channel.id);
+
+  const targetId = routes[message.channel.id];
+  console.log("Mapped target:", targetId);
+
+  if (!targetId) return;
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
