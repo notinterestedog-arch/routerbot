@@ -27,7 +27,7 @@ const client = new Client({
 
 // ROUTING TABLE
 const routes = {
-  "CHANNEL_A_ID": "CHANNEL_B_ID",
+  "1495380406567178302": "1496887895687037234",
   "CHANNEL_C_ID": "CHANNEL_D_ID"
 };
 
