@@ -1,4 +1,16 @@
 const { Client, GatewayIntentBits } = require('discord.js');
+const express = require('express');
+
+const app = express();
+
+// keep Render happy (fake web server)
+app.get("/", (req, res) => {
+  res.send("Bot is alive");
+});
+
+app.listen(10000, () => {
+  console.log("Web server running on port 10000");
+});
 
 const client = new Client({
   intents: [
